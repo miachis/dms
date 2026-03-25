@@ -1,0 +1,6 @@
+#about {
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

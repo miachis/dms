@@ -1,0 +1,47 @@
+footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  justify-content: center;
+  align-content: center;
+  row-gap: 20px;
+}
+
+#githubLink {
+  font-size: 17px;
+  text-decoration: none;
+}
+
+#githubLink:visited {
+  color: black;
+}
+
+.listHeading {
+  font-size: 1em;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#copyrightText {
+  grid-column: span 3;
+  justify-self: center;
+}
+
+.footerUnorderedList {
+  justify-items: center;
+}
+
+.footerListItem {
+  text-align: left;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.footerListItem:hover {
+  color: #5e9460;
+}
+
+#githubLink:hover {
+  color: #5e9460;
+}

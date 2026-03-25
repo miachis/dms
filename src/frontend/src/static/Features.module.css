@@ -1,0 +1,23 @@
+#features {
+  margin-bottom: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#featuresHeading {
+  font-size: 3.5rem;
+  margin-bottom: 70px;
+}
+
+#featuresUnorderedList > li {
+  margin-bottom: 100px;
+  border: 1px solid #5c705d;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  padding: 50px;
+  gap: 30px;
+  font-size: 1.5rem;
+}

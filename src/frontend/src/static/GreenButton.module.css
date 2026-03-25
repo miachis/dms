@@ -1,0 +1,14 @@
+.greenBtn {
+  background-color: #5e9460;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  height: 46px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 120px;
+}
+
+.greenBtn:hover {
+  background-color: #628863;
+}
