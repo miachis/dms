@@ -30,3 +30,11 @@
 #p {
   font-size: 20px;
 }
+
+.errorMsg {
+  color: red;
+  text-align: left;
+  font-size: 16px;
+  margin-top: -15px;
+  margin-bottom: 30px;
+}
