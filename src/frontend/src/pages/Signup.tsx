@@ -1,12 +1,15 @@
 import { useState, type ChangeEvent } from "react";
 import styles from "../static/Signup.module.css";
 import { Link } from "react-router-dom";
+import { BackButton } from "../components/BackButton";
 
 interface UserInfo {
   email: string;
   username: string;
   password: string;
 }
+
+// Add form validation to signup and login
 
 const initState: UserInfo = { email: "", username: "", password: "" };
 
@@ -33,7 +36,7 @@ export function Signup() {
 
   return (
     <section>
-      <button>Back</button>
+      <BackButton />
       <div id={styles.formContainer}>
         {/* post to an api */}
         <form action="" id={styles.signUpForm}>
@@ -69,7 +72,7 @@ export function Signup() {
           <button type="submit" id={styles.signUpBtn}>
             Register
           </button>
-          <p>
+          <p id={styles.p}>
             Already have an account?{" "}
             <Link to={"/login"} id={styles.loginLink}>
               Login

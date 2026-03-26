@@ -2,4 +2,31 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  height: 100vh;
+  align-items: center;
+}
+
+#loginBtn {
+  border: none;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  background-color: #5e9460;
+  font-size: 1.5em;
+  border: none;
+  color: white;
+}
+
+#registerLink {
+  color: #5e9460;
+  text-decoration: none;
+}
+
+#registerLink:hover {
+  color: #628863;
+}
+
+#p {
+  font-size: 20px;
 }

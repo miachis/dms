@@ -1,6 +1,9 @@
 import { Signup } from "../pages/Signup.tsx";
 import App from "../App.tsx";
 import { Login } from "../pages/Login.tsx";
+import { PrivacyPolicy } from "../pages/PrivacyPolicy.tsx";
+import { DeleteAccount } from "../pages/DeleteAccount.tsx";
+import { TermsOfService } from "../pages/TermsOfService.tsx";
 
 interface Routes {
   path: string;
@@ -19,5 +22,17 @@ export const routes: Routes[] = [
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "/privacy-policy",
+    element: <PrivacyPolicy />,
+  },
+  {
+    path: "/delete-account",
+    element: <DeleteAccount />,
+  },
+  {
+    path: "/terms-of-service",
+    element: <TermsOfService />,
   },
 ];

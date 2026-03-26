@@ -36,3 +36,8 @@
   cursor: pointer;
   gap: 25px;
 }
+
+#getStartedLink {
+  text-decoration: none;
+  color: white;
+}

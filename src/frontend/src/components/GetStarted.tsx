@@ -11,7 +11,11 @@ export function GetStarted() {
         way to Text
       </p>
       <div id={styles.getStarted}>
-        <p id={styles.getStartedText}>Get Started</p>
+        <p id={styles.getStartedText}>
+          <Link to={"/register"} id={styles.getStartedLink}>
+            Get Started
+          </Link>
+        </p>
         <Link to={"login"}>
           <GreenButton text="Login" />
         </Link>

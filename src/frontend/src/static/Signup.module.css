@@ -1,4 +1,4 @@
-#signUpForm {
+form {
   border: 0.5px solid grey;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
 }
 
 h1,
-p {
+#p {
   margin: 0;
 }
 
@@ -19,6 +19,7 @@ p {
   background-color: #5e9460;
   font-size: 1.5em;
   border: none;
+  color: white;
 }
 
 #loginLink {
@@ -37,7 +38,7 @@ h1 {
   font-size: 4em;
 }
 
-p {
+#p {
   font-size: 20px;
 }
 

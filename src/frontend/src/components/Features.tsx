@@ -3,6 +3,7 @@ import styles from "../static/Features.module.css";
 export function Features() {
   return (
     <section id={styles.features}>
+      <section id="features"></section>
       <h1 id={styles.featuresHeading}>Current Features Available</h1>
       <ul id={styles.featuresUnorderedList}>
         <li>

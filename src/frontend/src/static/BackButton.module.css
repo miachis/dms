@@ -1,0 +1,16 @@
+#btn {
+  background-color: #5e9460;
+  border: none;
+  padding: 8px;
+  color: white;
+  cursor: pointer;
+  width: 7em;
+  font-size: 17px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+}
+
+#span {
+  margin-left: 18px;
+}

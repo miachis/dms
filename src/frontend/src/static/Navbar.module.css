@@ -19,7 +19,7 @@ nav {
 #brandText {
   font-size: 2.5rem;
   font-weight: 700;
-  color: black;
+  color: white;
   text-decoration: none;
 }
 
@@ -28,6 +28,15 @@ nav {
   cursor: pointer;
 }
 
-.navLinks:hover {
+.navLinksInPage {
+  text-decoration: none;
+  color: white;
+}
+
+.navLinksInPage:visited {
+  color: white;
+}
+
+.navLinksInPage:hover {
   color: #6cd470;
 }

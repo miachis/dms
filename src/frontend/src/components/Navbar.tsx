@@ -9,10 +9,21 @@ export function Navbar() {
         DM's
       </a>
       <ul className={styles.unorderedList}>
-        <li className={styles.navLinks}>About</li>
-        <li className={styles.navLinks}>Features</li>
-        <li className={styles.navLinks}>FAQ</li>
-        <li className={styles.navLinks}>Privacy Policy</li>
+        <li className={styles.navLinks}>
+          <a href="#about" className={styles.navLinksInPage}>
+            About
+          </a>
+        </li>
+        <li className={styles.navLinks}>
+          <a href="#features" className={styles.navLinksInPage}>
+            Features
+          </a>
+        </li>
+        <li className={styles.navLinks}>
+          <Link to={"/privacy-policy"} className={styles.navLinksInPage}>
+            Privacy Policy
+          </Link>
+        </li>
         <li>
           <Link to={"register"}>
             <GreenButton text="Register" />
