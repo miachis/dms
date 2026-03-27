@@ -1,14 +1,13 @@
 import styles from "../static/Signup.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { BackButton } from "../components/BackButton";
 import { useForm, type SubmitHandler } from "react-hook-form";
-
-type Inputs = {
-  email: string;
-  username: string;
-  password: string;
-  confirmPassword: string;
-};
+import { useState } from "react";
+import type {
+  Inputs,
+  APIErrorResponse,
+  APIResponse,
+} from "../types/signUpTypes";
 
 export function Signup() {
   const {
@@ -18,18 +17,44 @@ export function Signup() {
     formState: { errors },
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = async (data) => {
-    // const response = await fetch("http:localhost:3000/api/users", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(data),
-    // });
-    console.log(data);
-  };
-
   const password = watch("password");
+
+  const navigate = useNavigate();
+
+  const [apiError, setApiError] = useState<string[]>([""]);
+
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    try {
+      const response = await fetch("http://localhost:3000/api/users", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result: APIResponse = await response.json();
+
+      if (result.error) {
+        if (Array.isArray(result.error)) {
+          const newArray: string[] = [];
+          result.error.map((err: APIErrorResponse) => {
+            newArray.push(err.msg);
+          });
+          setApiError(() => newArray);
+          return;
+        }
+        setApiError([result.error]);
+        return;
+      }
+
+      if (result.token) {
+        localStorage.setItem("access_token", result.token);
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <section>
@@ -37,6 +62,11 @@ export function Signup() {
       <div id={styles.formContainer}>
         <form id={styles.signUpForm} onSubmit={handleSubmit(onSubmit)}>
           <h1>Register</h1>
+          {apiError.length > 1 ? (
+            apiError.map((err) => <p style={{ color: "red" }}>{err}</p>)
+          ) : (
+            <p style={{ color: "red" }}>{apiError[0]}</p>
+          )}
           <input
             type="email"
             {...register("email", { required: "Email is required" })}

@@ -4,6 +4,7 @@ import { Login } from "../pages/Login.tsx";
 import { PrivacyPolicy } from "../pages/PrivacyPolicy.tsx";
 import { DeleteAccount } from "../pages/DeleteAccount.tsx";
 import { TermsOfService } from "../pages/TermsOfService.tsx";
+import { Dashboard } from "../pages/Dashboard.tsx";
 
 interface Routes {
   path: string;
@@ -20,7 +21,7 @@ export const routes: Routes[] = [
     element: <Signup />,
   },
   {
-    path: "login",
+    path: "/login",
     element: <Login />,
   },
   {
@@ -34,5 +35,9 @@ export const routes: Routes[] = [
   {
     path: "/terms-of-service",
     element: <TermsOfService />,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
   },
 ];
