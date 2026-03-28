@@ -1,7 +1,7 @@
 import { prisma } from "./lib/prisma.js";
 
 async function main() {
-  const users = await prisma.users.deleteMany();
+  const users = await prisma.users.findMany();
   console.log(users);
 }
 

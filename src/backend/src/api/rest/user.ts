@@ -5,6 +5,7 @@ import { validationResult } from "express-validator";
 import { validation } from "../../validators/formValidation.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { jwtAuth } from "../../middleware/jwtAuth.js";
 
 const router = Router();
 
@@ -66,30 +67,28 @@ async function PostUser(req: Request<{}, {}, UserInputs>, res: Response) {
     } catch (error) {
       return res
         .status(500)
-        .json({ success: false, response: `An error occured: ${error}` });
+        .json({ success: false, error: `An error occured: ${error}` });
     }
   } else {
     res.status(400).json({ success: false, error: result.array() });
   }
 }
 
-async function GetUser(req: Request<UserId, {}, {}>, res: Response) {
-  // try {
-  //   const userId = +req.params.userId;
-  //   const user = await prisma.users.findUnique({
-  //     where: {
-  //       id: userId,
-  //     },
-  //     select: {
-  //       username: true,
-  //       email: true,
-  //     },
-  //   });
-  //   return res.status(200).json({ success: true, response: user });
-  // } catch (error) {
-  //   res.status(404).json({ success: false, error: "Resource Not Found." });
-  // }
-  console.log("gotten");
+async function GetUser(req: Request, res: Response) {
+  try {
+    const user = await prisma.users.findUnique({
+      where: {
+        id: Number(req.user?.id),
+      },
+      select: {
+        username: true,
+        email: true,
+      },
+    });
+    return res.status(200).json({ success: true, response: user });
+  } catch (error) {
+    res.status(404).json({ success: false, error: "Resource Not Found." });
+  }
 }
 
 async function UpdateUser(req: Request, res: Response) {
@@ -100,9 +99,9 @@ async function DeleteUser(req: Request, res: Response) {
   console.log("deleted");
 }
 
-router.get("/:userId", GetUser);
+router.get("/dashboard", jwtAuth, GetUser);
 router.post("/", validation, PostUser);
-router.patch("/", UpdateUser);
-router.delete("/", DeleteUser);
+router.patch("/", jwtAuth, UpdateUser);
+router.delete("/", jwtAuth, DeleteUser);
 
 export default router;

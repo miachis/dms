@@ -9,6 +9,7 @@ export interface APIResponse {
   success: string;
   error?: string;
   token?: string;
+  response?: object;
 }
 
 export interface APIErrorResponse {
