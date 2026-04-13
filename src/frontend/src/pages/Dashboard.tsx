@@ -1,14 +1,27 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-interface UserData {
-  success: boolean;
-  response: { email: string; password: string };
-}
+import { Outlet, useNavigate } from "react-router-dom";
+import { Sidebar } from "../components/Sidebar";
+import styles from "../static/Dashboard.module.css";
+import { DashboardContext } from "../contexts/useUserContext";
+import { type APIResponse } from "../types/signUpTypes";
 
 export function Dashboard() {
-  const [data, setData] = useState<UserData>();
+  const [data, setData] = useState<APIResponse>({
+    success: "",
+    response: { email: "", profilePicture: "", id: "", username: "" },
+  });
   const navigate = useNavigate();
+
+  const updateProfilePicture = (url: string) => {
+    setData((prev) => {
+      return {
+        ...prev,
+        response: prev.response
+          ? { ...prev.response, profilePicture: url }
+          : prev.response,
+      };
+    });
+  };
 
   const fetchUser = async () => {
     try {
@@ -36,9 +49,16 @@ export function Dashboard() {
     fetchUser();
   }, []);
 
-  return (
-    <div>
-      {data ? <h1>Welcome {data.response.email}</h1> : <p>No user found</p>}
+  if (data.response!.id === "") return;
+
+  return data ? (
+    <div id={styles.dashboard}>
+      <Sidebar />
+      <DashboardContext.Provider value={{ ...data, updateProfilePicture }}>
+        <Outlet />
+      </DashboardContext.Provider>
     </div>
+  ) : (
+    <p>No user found</p>
   );
 }

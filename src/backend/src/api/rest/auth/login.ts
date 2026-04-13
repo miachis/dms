@@ -10,6 +10,12 @@ interface UserInfo {
 
 export async function login(req: Request<{}, {}, UserInfo>, res: Response) {
   try {
+    const accessTokenKey = process.env.ACCESS_TOKEN_KEY;
+
+    if (!accessTokenKey) {
+      throw new Error("Access token is undefined");
+    }
+
     const { email, password } = req.body;
     const user = await prisma.users.findUnique({
       where: {
@@ -32,9 +38,9 @@ export async function login(req: Request<{}, {}, UserInfo>, res: Response) {
     const payload = {
       id: user.id,
     };
-    const token = jwt.sign(payload, `${process.env.ACCESS_TOKEN_KEY}`);
+    const accessToken = jwt.sign(payload, accessTokenKey);
 
-    return res.status(200).json({ success: true, token });
+    return res.status(200).json({ success: true, token: accessToken });
   } catch (error) {
     return res
       .status(500)

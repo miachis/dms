@@ -44,9 +44,26 @@ footer {
 #lastFooterElement {
   grid-column: span 3;
   justify-self: center;
+  margin-bottom: 20px;
 }
 
 .footerLinks {
   text-decoration: none;
   color: white;
+}
+
+@media screen and (max-width: 500px) {
+  .listHeading {
+    font-size: 0.9em;
+  }
+
+  .footerLinks,
+  .footerListItem,
+  #githubLink {
+    font-size: 0.7rem;
+  }
+
+  #lastFooterElement {
+    font-size: 0.5em;
+  }
 }

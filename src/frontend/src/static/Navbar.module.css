@@ -13,21 +13,39 @@ nav {
   align-items: center;
   justify-content: space-between;
   border-radius: 10px;
-  padding: 0px 10px;
+  padding: 0px 15px;
 }
 
 #brandText {
   font-size: 2.5rem;
   font-weight: 700;
-  color: white;
-  text-decoration: none;
 }
 
 .navLinks {
-  font-size: 20px;
+  font-size: 1rem;
   cursor: pointer;
 }
 
+.registerBtn {
+  background-color: #5e9460;
+  color: white;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1.3rem;
+  width: min-content;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.registerBtn:hover {
+  background-color: #628863;
+}
+
+#brandText,
 .navLinksInPage {
   text-decoration: none;
   color: white;
@@ -39,4 +57,37 @@ nav {
 
 .navLinksInPage:hover {
   color: #6cd470;
+}
+
+/* Mobile phones */
+@media (max-width: 500px) {
+  #brandText {
+    font-size: 2em;
+  }
+
+  .unorderedList {
+    gap: 5px;
+  }
+
+  .navLinks,
+  .registerBtn {
+    font-size: 0.7em;
+  }
+  .registerBtn {
+    padding: 1% 2%;
+    text-align: center;
+    border-radius: 4px;
+  }
+}
+
+/* Tablet devices */
+@media screen and (min-width: 800px) {
+  .unorderedList {
+    gap: 8px;
+  }
+
+  .registerBtn {
+    font-size: 1em;
+    padding: 5px 5px;
+  }
 }

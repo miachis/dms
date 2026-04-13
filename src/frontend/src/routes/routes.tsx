@@ -5,13 +5,13 @@ import { PrivacyPolicy } from "../pages/PrivacyPolicy.tsx";
 import { DeleteAccount } from "../pages/DeleteAccount.tsx";
 import { TermsOfService } from "../pages/TermsOfService.tsx";
 import { Dashboard } from "../pages/Dashboard.tsx";
+import { Profile } from "../components/Profile.tsx";
+import { Messages } from "../components/Messages.tsx";
+import { Search } from "../components/Search.tsx";
+import { Chat } from "../components/Chat.tsx";
+import { createBrowserRouter } from "react-router-dom";
 
-interface Routes {
-  path: string;
-  element: React.JSX.Element;
-}
-
-export const routes: Routes[] = [
+export const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -39,5 +39,14 @@ export const routes: Routes[] = [
   {
     path: "/dashboard",
     element: <Dashboard />,
+    children: [
+      { path: "profile", element: <Profile /> },
+      {
+        path: "messages",
+        element: <Messages />,
+        children: [{ path: ":id", element: <Chat /> }],
+      },
+      { path: "search", element: <Search /> },
+    ],
   },
-];
+]);

@@ -1,11 +1,6 @@
 body {
-  background:
-    linear-gradient(to bottom, #5e946059, rgba(0, 0, 0, 1)),
-    url("/kuu-akura-pnK6Q-QTHM4-unsplash.jpg");
-  background-size: contain;
-  background-position: center;
-  /* background-repeat: no-repeat; */
   color: white;
+  background-color: black;
   font-family: Verdana, Geneva, sans-serif;
 }
 

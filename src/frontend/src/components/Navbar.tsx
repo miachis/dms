@@ -21,14 +21,17 @@ export function Navbar() {
         </li>
         <li className={styles.navLinks}>
           <Link to={"/privacy-policy"} className={styles.navLinksInPage}>
-            Privacy Policy
+            Policy
           </Link>
         </li>
-        <li>
-          <Link to={"register"}>
-            <GreenButton text="Register" />
+        <li className={styles.navLinks}>
+          <Link to={"/dashboard"} className={styles.navLinksInPage}>
+            Dashboard
           </Link>
         </li>
+        <Link to={"register"} className={styles.registerBtn}>
+          <button className={styles.registerBtn}>Register</button>
+        </Link>
       </ul>
     </nav>
   );

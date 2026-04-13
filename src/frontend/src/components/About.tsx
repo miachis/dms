@@ -4,10 +4,10 @@ export function About() {
   return (
     <section id={styles.about}>
       <section id="about"></section>
-      <h1>About</h1>
-      <div className={styles.div}>
+      <h1 id={styles.h1}>About</h1>
+      <div>
         <h3 className={styles.heads}>- Next-Gen Real-Time Messaging App</h3>
-        <ol>
+        <ol className={styles.ol}>
           <li className={styles.list}>
             Chat instantly with friends and groups
           </li>

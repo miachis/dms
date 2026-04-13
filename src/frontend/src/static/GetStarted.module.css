@@ -41,3 +41,28 @@
   text-decoration: none;
   color: white;
 }
+
+@media screen and (max-width: 500px) {
+  #landingPageText {
+    font-size: 3rem;
+    line-height: 80px;
+    padding: 10px;
+    width: 70vw;
+  }
+
+  #getStarted {
+    gap: 20px;
+  }
+
+  #getStartedText {
+    font-size: 1rem;
+  }
+
+  #getStartedContainer {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
+}
+
+@media screen and (min-width: 800px) {
+}

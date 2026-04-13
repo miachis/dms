@@ -60,9 +60,9 @@ export function Login() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h1>Login</h1>
           {apiErrors.length > 1 ? (
-            apiErrors.map((err) => <p>{err}</p>)
+            apiErrors.map((err) => <p style={{ color: "red" }}>{err}</p>)
           ) : (
-            <p>{apiErrors[0]}</p>
+            <p style={{ color: "red" }}>{apiErrors[0]}</p>
           )}
           <input
             type="email"

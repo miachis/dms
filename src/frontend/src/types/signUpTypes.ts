@@ -9,7 +9,12 @@ export interface APIResponse {
   success: string;
   error?: string;
   token?: string;
-  response?: object;
+  response?: {
+    email: string;
+    username: string;
+    id: string;
+    profilePicture?: string;
+  };
 }
 
 export interface APIErrorResponse {
