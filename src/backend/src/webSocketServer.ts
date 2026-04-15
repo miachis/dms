@@ -17,17 +17,22 @@ io.on("connection", (socket) => {
     fullMaps.set(id, socket.id);
   });
 
-  socket.on("join room", async (room) => {
+  socket.on("join room", async (room: string) => {
     socket.join(room);
+
+    // const conversationName = room;
 
     // const existingConversation = await prisma.conversations.findFirst({
     //   where: {
-    //     participants: {
-    //     }
-    //   }
-    // })
+    //     name: conversationName,
+    //   },
+    // });
 
-    // if exisiting conversation,
+    // if (existingConversation) {
+    //   // add messages to the conversation
+    // } else {
+    //   // create new conversation
+    // }
   });
 
   socket.on(

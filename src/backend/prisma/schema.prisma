@@ -13,13 +13,13 @@ datasource db {
 }
 
 model Users {
-  id                Int            @id @default(autoincrement())
-  email             String         @unique
-  username          String         @unique
-  password          String
+  id             Int            @id @default(autoincrement())
+  email          String         @unique
+  username       String         @unique
+  password       String
   profilePicture String?
-  messages          Messages[]
-  participants      Participants[]
+  messages       Messages[]
+  participants   Participants[]
 }
 
 model Messages {
@@ -35,6 +35,7 @@ model Messages {
 model Conversations {
   id           Int            @id @default(autoincrement())
   createdAt    DateTime       @default(now())
+  name         String?
   messages     Messages[]
   participants Participants[]
 }

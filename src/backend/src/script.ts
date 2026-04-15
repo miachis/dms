@@ -2,8 +2,8 @@
 
 // async function main() {
 //   // Create a new user with a post
-//   const users = await prisma.users.findMany();
-//   console.log("users: ", users);
+//   const reslt = await prisma.conversations.deleteMany();
+//   console.log(reslt);
 // }
 
 // main()
