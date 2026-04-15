@@ -62,4 +62,4 @@ npm run dev
 
 Then open a browser and visit
 
-`http://localhost/3000`
+`http://localhost:5173`
