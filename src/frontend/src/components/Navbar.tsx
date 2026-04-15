@@ -1,4 +1,3 @@
-import { GreenButton } from "./GreenButton";
 import { Link } from "react-router-dom";
 import styles from "../static/Navbar.module.css";
 
