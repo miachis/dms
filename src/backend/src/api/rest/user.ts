@@ -91,7 +91,7 @@ async function GetUser(req: Request, res: Response) {
   try {
     const user = await prisma.users.findUnique({
       where: {
-        id: Number(req.user!.id),
+        id: req.user?.id!,
       },
       select: {
         username: true,
@@ -108,6 +108,7 @@ async function GetUser(req: Request, res: Response) {
     });
   }
 }
+
 async function GetUserById(req: Request, res: Response) {
   try {
     const user = await prisma.users.findUnique({
