@@ -2,11 +2,12 @@
   "name": "dms-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
     "build": "tsc",
+    "start": "node dist/src/app.js",
     "watch": "tsc -w",
     "server": "nodemon dist/src/app.js",
     "server2": "nodemon dist/src/webSocketServer.js",
