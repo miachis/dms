@@ -12,9 +12,19 @@ type Response = {
   username: string;
 };
 
-interface Messages {
-  senderId: string;
+type APIMessage = {
+  id?: number;
   message: string;
+  createdAt?: string;
+  senderId?: number;
+  conversationId?: number;
+};
+
+interface APIMessageResponse {
+  id?: number;
+  createdAt?: string;
+  name?: string;
+  messages: APIMessage[];
 }
 
 export function Chat() {
@@ -22,7 +32,7 @@ export function Chat() {
   const { response } = useUserContext(); // this response holds the current user
   const [receiver, setReceiver] = useState<Response>();
   const [input, setInput] = useState<string>("");
-  const [messages, setMessages] = useState<Messages[]>([]); //populate this state with messages from the database
+  const [messages, setMessages] = useState<APIMessageResponse[]>([]); //populate this state with messages from the database
   const socketRef = useOutletContext<React.RefObject<Socket>>();
 
   let room: string;
@@ -37,14 +47,15 @@ export function Chat() {
 
   useEffect(() => {
     getUserWithId();
+    fetchMessages(room);
 
-    const handler = (message: string, id: string) => {
-      displayMessage(message, id);
+    const handler = () => {
+      displayMessage();
     };
 
     if (socketRef.current) {
       socketRef.current.on("message sent", handler);
-      socketRef.current.emit("join room", room);
+      socketRef.current.emit("join room", room, response?.id);
     }
 
     return () => {
@@ -69,8 +80,8 @@ export function Chat() {
     setInput("");
   };
 
-  const displayMessage = (message: string, senderId: string) => {
-    setMessages((prev) => [...prev, { message: message, senderId: senderId }]);
+  const displayMessage = () => {
+    fetchMessages(room);
   };
 
   const handleKeyPress = (
@@ -85,6 +96,19 @@ export function Chat() {
     }
   };
 
+  const fetchMessages = async (conversationName: string) => {
+    try {
+      const response = await fetch(
+        `http://localhost:3000/messages/${conversationName}`,
+      );
+      const data = await response.json();
+      setMessages(data.response);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   return (
     <div className={styles.div}>
       <p className={styles.receiverName}>
@@ -92,13 +116,13 @@ export function Chat() {
       </p>
       <div id={styles.chatContainer}>
         {messages.length > 0 ? (
-          messages.map((message) => {
+          messages[0].messages.map((message) => {
             return (
               <div
                 className={
-                  message.senderId === response?.id
-                    ? styles.messageSent
-                    : styles.messageReceived
+                  message.senderId === Number(id)
+                    ? styles.messageReceived
+                    : styles.messageSent
                 }
               >
                 {message.message}

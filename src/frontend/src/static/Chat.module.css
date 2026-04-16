@@ -8,8 +8,8 @@
   background-color: #5e9460;
   width: max-content;
   word-wrap: break-word;
-  padding: 12px;
-  font-size: 1.5rem;
+  padding: 8px;
+  font-size: 1.2rem;
   border-radius: 5px;
   align-self: flex-end;
   margin: 5px 0;
@@ -19,8 +19,8 @@
   background-color: grey;
   width: max-content;
   word-wrap: break-word;
-  padding: 12px;
-  font-size: 1.5rem;
+  padding: 8px;
+  font-size: 1.2rem;
   border-radius: 5px;
   align-self: flex-start;
   margin: 5px 0;
@@ -29,7 +29,8 @@
 .div {
   display: flex;
   flex-direction: column;
-  height: 100%; /* or 100vh depending on your layout */
+  height: 100vh; /* or 100vh depending on your layout */
+  overflow-y: auto;
 }
 
 #chatContainer {
@@ -126,5 +127,10 @@
   .chatBox {
     padding: 0px 10px;
     padding-bottom: 20px;
+  }
+
+  .messageReceived,
+  .messageSent {
+    font-size: 0.8rem;
   }
 }

@@ -6,4 +6,5 @@ body {
   display: grid;
   grid-template-columns: max-content auto;
   height: 100vh;
+  overflow: hidden;
 }
