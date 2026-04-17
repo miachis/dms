@@ -28,7 +28,7 @@ export function Dashboard() {
       const token = localStorage.getItem("access_token");
       if (token) {
         const response = await fetch(
-          "http://localhost:3000/api/users/dashboard",
+          "https://dms-3p9o.onrender.com/api/users/dashboard",
           {
             headers: {
               Authorization: `Bearer ${token}`,

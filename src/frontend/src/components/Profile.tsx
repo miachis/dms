@@ -36,7 +36,7 @@ export function Profile() {
     try {
       if (response) {
         const apiResponse = await fetch(
-          `http://localhost:3000/upload/${response.id}`,
+          `https://dms-3p9o.onrender.com/upload/${response.id}`,
           {
             method: "POST",
             body: formData,

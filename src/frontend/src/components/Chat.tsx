@@ -65,11 +65,14 @@ export function Chat() {
 
   const getUserWithId = async () => {
     const token = localStorage.getItem("access_token");
-    const response = await fetch(`http://localhost:3000/api/users/${id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
+    const response = await fetch(
+      `https://dms-3p9o.onrender.com/api/users/${id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       },
-    });
+    );
     const data = await response.json();
     setReceiver(data.response);
   };
@@ -99,7 +102,7 @@ export function Chat() {
   const fetchMessages = async (conversationName: string) => {
     try {
       const response = await fetch(
-        `http://localhost:3000/messages/${conversationName}`,
+        `https://dms-3p9o.onrender.com/messages/${conversationName}`,
       );
       const data = await response.json();
       setMessages(data.response);

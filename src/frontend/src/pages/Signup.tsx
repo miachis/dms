@@ -25,7 +25,7 @@ export function Signup() {
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      const response = await fetch("http://localhost:3000/api/users", {
+      const response = await fetch("https://dms-3p9o.onrender.com/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

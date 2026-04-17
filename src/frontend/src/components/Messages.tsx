@@ -19,7 +19,7 @@ export function Messages() {
   const webSocketServer = useRef<Socket | null>(null);
 
   useEffect(() => {
-    const socket = io("ws://localhost:4000");
+    const socket = io("https://dms-3p9o.onrender.com");
     webSocketServer.current = socket;
     getUsersAndConnect();
   }, []);
@@ -36,7 +36,7 @@ export function Messages() {
   const getAllUsers = async () => {
     try {
       const token = localStorage.getItem("access_token");
-      const response = await fetch("http://localhost:3000/api/users", {
+      const response = await fetch("https://dms-3p9o.onrender.com/api/users", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
