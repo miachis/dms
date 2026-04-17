@@ -89,18 +89,20 @@ async function PostUser(req: Request<{}, {}, UserInputs>, res: Response) {
 
 async function GetUser(req: Request, res: Response) {
   try {
-    const user = await prisma.users.findUnique({
-      where: {
-        id: req.user?.id!,
-      },
-      select: {
-        username: true,
-        email: true,
-        id: true,
-        profilePicture: true,
-      },
-    });
-    return res.status(200).json({ success: true, response: user });
+    if (req.user) {
+      const user = await prisma.users.findUnique({
+        where: {
+          id: req.user.id,
+        },
+        select: {
+          username: true,
+          email: true,
+          id: true,
+          profilePicture: true,
+        },
+      });
+      return res.status(200).json({ success: true, response: user });
+    }
   } catch (error) {
     res.status(404).json({
       success: false,
