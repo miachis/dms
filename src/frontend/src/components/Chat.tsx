@@ -103,6 +103,9 @@ export function Chat() {
     try {
       const response = await fetch(
         `https://dms-3p9o.onrender.com/messages/${conversationName}`,
+        {
+          credentials: "include",
+        },
       );
       const data = await response.json();
       setMessages(data.response);
