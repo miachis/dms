@@ -36,7 +36,7 @@ const server = http.createServer(app); /*HTTP SERVER*/
 
 const io = new Server(server, {
   cors: {
-    origin: "https://dms-ivory.vercel.app",
+    origin: "http://dms-ivory.vercel.app",
     credentials: true,
   },
 });
